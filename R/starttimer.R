@@ -8,8 +8,7 @@
 #' @description Use a project name that you can reference.
 #'
 #' @import Tidyverse
-#' @example
-#' starttimer('GSK - Benlysta - metrics map')
+#'
 #' @include
 
 start <- function(pn) {
