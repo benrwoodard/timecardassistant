@@ -16,7 +16,7 @@
 #' @include
 
 start <- function(pn, starttime = Sys.time(), started = NA) {
-  if(is.na(started)) {
+  if(!is.na(started)) {
     started = started*60*60
     starttime = starttime - started
   }
