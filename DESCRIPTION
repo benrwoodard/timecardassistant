@@ -3,7 +3,7 @@ Type: Package
 Title: Assists In The Creating Of Timecards
 Version: 0.1.1
 Author: Ben Woodard
-Maintainer: Ben Woodard <ben.woodard@searchdiscov>
+Maintainer: Ben Woodard <ben.woodard@searchdiscovery.com>
 Description: Use this package to assist you in keeping track of your time.
     Using this app in the daily R tasks will help you build your R skills while 
     keeping track of your activity time and streamlining your daily timecard entries.
