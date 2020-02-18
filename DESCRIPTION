@@ -8,6 +8,7 @@ Description: Use this package to assist you in keeping track of your time.
     Using this app in the daily R tasks will help you build your R skills while 
     keeping track of your activity time and streamlining your daily timecard entries.
 License: What license should I include?
+Depends: tidyverse (>= 1.3.0)
 Encoding: UTF-8
 LazyData: true
 Imports: 
