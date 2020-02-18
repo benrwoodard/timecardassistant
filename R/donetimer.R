@@ -10,13 +10,12 @@
 #' @param projectstart this is the record of the start time and project name
 #' @param pf this is the project finish time defined by the time the 'done' call was made
 #'
-#' @import magrittr, dplyr
+#' @import dplyr
 #'
 #' @include
 #'
 
 done <- function(projectstart = ps, pf = Sys.time()) {
-  library(dplyr)
   ps <- ps %>% mutate(finishtime = pf,
                       dif = round(as.numeric(pf - starttime, units = "hours"), digits = 2))
 
