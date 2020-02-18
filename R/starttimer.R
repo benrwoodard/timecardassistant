@@ -12,6 +12,7 @@
 #' earlier and want to catch up add
 #' @param started The time delay in decimal hour when you started the project.
 #' For example use '.50' to start the project 30 minutes ago.
+#'
 #' @include
 
 start <- function(pn, starttime = Sys.time(), started = NA) {

@@ -6,10 +6,11 @@
 #'
 #' @description Use a project name that you can reference.
 #'
-#' @import dplyr
+#' @import magrittr
 #'
 #' @param projectstart this is the record of the start time and project name
 #' @param pf this is the project finish time defined by the time the 'done' call was made
+#'
 #' @include
 #'
 

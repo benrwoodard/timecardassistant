@@ -1,7 +1,7 @@
 Package: timecardassistant
 Type: Package
 Title: Assists In The Creating Of Timecards
-Version: 0.1.2
+Version: 0.1.2.1
 Author: Ben Woodard
 Maintainer: Ben Woodard <ben.woodard@searchdiscovery.com>
 Description: Use this package to assist you in keeping track of your time.
@@ -11,7 +11,7 @@ License: MIT
 Encoding: UTF-8
 LazyData: true
 Depends:
-  dplyr
+  magrittr
 Imports: 
-  dplyr
+  magrittr
 
