@@ -1,4 +1,4 @@
 exportPattern("^[[:alpha:]]+")
 
-import("tidyverse")
+import("dplyr")
 importFrom("utils", "write.csv")
