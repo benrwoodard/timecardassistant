@@ -6,6 +6,8 @@
 #'
 #' @description Use a project name that you can reference.
 #'
+#' @import tidyverse
+#'
 #' @include
 #'
 
