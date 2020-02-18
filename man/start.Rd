@@ -9,7 +9,6 @@ Sets a global variable, "ps" (project start) which is used to build the timecard
 }
 \examples{
 start(pn = "projectname")
-}
-\examples{
 start(pn = "projectname", started = .75)
 }
+
