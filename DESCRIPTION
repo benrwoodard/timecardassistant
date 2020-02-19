@@ -1,7 +1,7 @@
 Package: timecardassistant
 Type: Package
 Title: Assists In The Creating Of Timecards
-Version: 0.1.2.2
+Version: 0.1.2.5
 Author: Ben Woodard
 Maintainer: Ben Woodard <ben.woodard@searchdiscovery.com>
 Description: Use this package to assist you in keeping track of your time.
