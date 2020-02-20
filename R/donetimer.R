@@ -6,12 +6,11 @@
 #'
 #' @description Use a project name that you can reference.
 #'
-#'
-#' @param projectstart this is the record of the start time and project name
-#' @param pf this is the project finish time defined by the time the 'done' call was made
 #' @param notes leave notes for yourself to be able to reference later
 #' @param finished define this by using the percentage of hours (.50 = 30 minutes)
 #' if you need to adjust when you finished working on a project
+#' @param projectstart this is the record of the start time and project name
+#' @param pf this is the project finish time defined by the time the 'done' function was called
 #'
 #' @import dplyr
 #'

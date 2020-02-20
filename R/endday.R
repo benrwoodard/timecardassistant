@@ -13,5 +13,7 @@
 endday <- function() {
   if(exists('timecard')) {
     write.csv(timecard, paste0(Sys.Date(),'_timecard.csv'))
+  } else {
+    print('Error: Something went wrong unfortunately. Unnable top find a global variable named \"timecard\".')
   }
 }
