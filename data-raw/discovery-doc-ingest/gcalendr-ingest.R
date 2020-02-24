@@ -5,7 +5,7 @@ library(tidyverse)
 devtools::load_all()
 
 source(
-  system.file("discovery-doc-ingest", "ingest-functions.R", package = "gcalendr")
+  system.file("discovery-doc-ingest", "ingest-functions.R", package = "gcal")
 )
 
 x <- download_discovery_document("calendar:v3")
@@ -25,7 +25,7 @@ attr(.endpoints, "base_url") <- dd$rootUrl
 # usually you would execute this from *within* the target package,
 # but I cannot do so in this example
 # please excuse the shenanigans to temporarily target the googledrive project
-if (basename(getwd()) == "gcalendr") {
+if (basename(getwd()) == "timecardassistant") {
   usethis::use_data(.endpoints, internal = TRUE, overwrite = TRUE)
 } else {
   warning("Execute this code only from inside the `gcalendr` project")
