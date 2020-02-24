@@ -14,7 +14,7 @@
 #'
 #' @import dplyr
 #'
-#' @include
+#' @export
 #'
 
 donetimer <- function(notes = NA, finished = NA, projectstart = ps, pf = Sys.time()) {

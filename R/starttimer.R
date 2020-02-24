@@ -13,7 +13,8 @@
 #' @param started The time delay in decimal hour when you started the project.
 #' For example use '.50' to start the project 30 minutes ago.
 #'
-#' @include
+#' @export
+#'
 
 starttimer <- function(pn, starttime = Sys.time(), started = NA) {
   if(!is.na(started)) {

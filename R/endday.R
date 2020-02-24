@@ -7,7 +7,7 @@
 #' @description Use this as often as you like to make sure the global
 #' variables are not erased during your day. The file should be overwritten
 #' the next time you used the function on the same day.
-#'
+#' @export
 
 
 endday <- function() {
