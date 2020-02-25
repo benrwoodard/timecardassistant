@@ -7,6 +7,7 @@
 #'
 #' @description Use a project name that you can reference.
 #'
+#' @param client Client initials ex. 1pw, gsk, ccc
 #' @param pn Project Name
 #' @param starttime The time that the project started. If you started
 #' earlier and want to catch up add
@@ -16,12 +17,12 @@
 #' @export
 #'
 
-starttimer <- function(pn, starttime = Sys.time(), started = NA) {
+starttimer <- function(client = "sdi", pn = "admin", starttime = Sys.time(), started = NA) {
   if(!is.na(started)) {
     started = started*60*60
     starttime = starttime - started
   }
 
-  p <- data.frame(pn, starttime)
+  p <- data.frame(client, pn, starttime)
   assign("ps", p, envir = .GlobalEnv)
 }
