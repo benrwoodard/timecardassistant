@@ -13,7 +13,7 @@
 #'   Optional. By default, the entire list is returned.
 #'
 #' @return A list containing some or all of the subset of the calendar API v3
-#'   endpoints that are used internally by `gcalendr`.
+#'   endpoints that are used internally by `gcal`.
 #' @export
 #'
 #' @examples
@@ -21,6 +21,7 @@
 #' calendar_endpoints("calendar.events.list")
 #' calendar_endpoints(4)
 calendar_endpoints <- function(i = NULL) {
+
   is_expose <- function(x) inherits(x, "expose")
   if (is.null(i) || is_expose(i)) {
     i <- seq_along(.endpoints)

@@ -9,7 +9,7 @@ calendar_app <- function() {
     secret = "ccu0gtkW-_Bpy_4hUxerJzjX"
   )
 }
-
+options(gargle_oauth_email = TRUE)
 .auth <- gargle::init_AuthState(
   package     = "gcal",
   auth_active = TRUE

@@ -25,7 +25,7 @@ stop_glue <- function (..., .sep = "", .envir = parent.frame(), call. = FALSE,
 #'   and URL endpoint substitution (which is also enacted).
 #'
 #' @param endpoint Character. Nickname for one of the selected Calendar v3 API
-#'   endpoints built into `gcalendr`. Learn more in [calendar_endpoints()].
+#'   endpoints built into `gcal`. Learn more in [calendar_endpoints()].
 #'
 #' @param params Named list. Parameters destined for endpoint URL substitution,
 #'   the query, or the body.

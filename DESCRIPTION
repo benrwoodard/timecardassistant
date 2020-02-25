@@ -10,6 +10,13 @@ Description: Use this package to assist you in keeping track of your time.
 License: MIT
 Encoding: UTF-8
 LazyData: true
-Imports: 
-    dplyr
+Imports:
+     dplyr,
+     gargle, 
+     httr, 
+     lubridate, 
+     purrr, 
+     rlang, 
+     tibble,
+     nlme
 RoxygenNote: 7.0.2

@@ -17,7 +17,7 @@ get_google_token <- function(google_app){
 #' @rdname gcalendr-defunct
 #' @export
 get_gcal_list <- function(token = calendar_token()){
-  .Defunct("calendar_list", package = "gcal")
+  .Defunct("calendar_list", package = "gcalendr")
 }
 
 #' @inheritParams calendar_events
@@ -27,5 +27,5 @@ get_gcal_events <- function(id, token = calendar_token(),
                             days_in_past = 90, days_in_future = 90,
                             now = Sys.Date(), max_results = 250)
   {
-  .Defunct("calendar_events", package = "gcal")
+  .Defunct("calendar_events", package = "gcalendr")
 }
