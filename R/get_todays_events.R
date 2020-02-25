@@ -8,7 +8,7 @@
 #'
 #' @export
 
-gcaltoday <- function(today = Sys.Date(), id = "ben.woodard@searchdiscovery.com") {
+gcaltoday <- function(today = Sys.Date(), id = gargle::gargle_oauth_email()) {
 
 today <- calendar_events(id = id ,now = today, days_in_future = 1,days_in_past = 0)
 events <- today %>%
