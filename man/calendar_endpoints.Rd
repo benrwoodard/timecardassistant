@@ -12,7 +12,7 @@ Optional. By default, the entire list is returned.}
 }
 \value{
 A list containing some or all of the subset of the calendar API v3
-  endpoints that are used internally by `gcalendr`.
+  endpoints that are used internally by `gcal`.
 }
 \description{
 Returns a list of selected calendar API v3 endpoints, as stored inside the

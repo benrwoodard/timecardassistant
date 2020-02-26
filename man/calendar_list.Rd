@@ -17,6 +17,7 @@ Get list of calendars from google.
 }
 \seealso{
 Other calendar functions: 
-\code{\link{calendar_events}()}
+\code{\link{calendar_events}()},
+\code{\link{gcaltoday}()}
 }
 \concept{calendar functions}

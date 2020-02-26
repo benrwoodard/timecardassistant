@@ -12,7 +12,7 @@ request_generate(
 }
 \arguments{
 \item{endpoint}{Character. Nickname for one of the selected Calendar v3 API
-endpoints built into `gcalendr`. Learn more in [calendar_endpoints()].}
+endpoints built into `gcal`. Learn more in [calendar_endpoints()].}
 
 \item{params}{Named list. Parameters destined for endpoint URL substitution,
 the query, or the body.}

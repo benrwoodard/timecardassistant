@@ -45,6 +45,7 @@ https://developers.google.com/google-apps/calendar/v3/reference/events/list
 }
 \seealso{
 Other calendar functions: 
-\code{\link{calendar_list}()}
+\code{\link{calendar_list}()},
+\code{\link{gcaltoday}()}
 }
 \concept{calendar functions}

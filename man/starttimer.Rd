@@ -4,9 +4,11 @@
 \alias{starttimer}
 \title{Start the timer}
 \usage{
-starttimer(pn, starttime = Sys.time(), started = NA)
+starttimer(client = "sdi", pn = "admin", starttime = Sys.time(), started = NA)
 }
 \arguments{
+\item{client}{Client initials ex. 1pw, gsk, ccc}
+
 \item{pn}{Project Name}
 
 \item{starttime}{The time that the project started. If you started
