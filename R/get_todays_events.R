@@ -11,6 +11,7 @@
 gcaltoday <- function(today = Sys.Date(), id = gargle::gargle_oauth_email()) {
 
 today <- calendar_events(id = id ,now = today, days_in_future = 1,days_in_past = 0)
+
 events <- today %>%
   mutate(start_time = format(start_datetime-(5*60*60), "%H:%M"),
          end_time = format(end_datetime-(5*60*60), "%H:%M") )  %>%
@@ -18,3 +19,4 @@ events <- today %>%
   arrange(start_time)
 return(events)
 }
+
