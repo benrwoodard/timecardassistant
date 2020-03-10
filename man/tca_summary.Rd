@@ -10,6 +10,7 @@ tca_summary(timecard = timecard, date_filter = Sys.Date())
 \item{timecard}{adds the timecard dataframe to the function}
 
 \item{date_filter}{This helps filter the results to today's date or change it.}
+\item{timecard}{ads the timecard dataframe to the function}
 }
 \description{
 Summarizes the group by day
