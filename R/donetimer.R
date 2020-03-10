@@ -58,4 +58,5 @@ donetimer <- function(notes = NA, finished = NA, projectstart = ps, pf = Sys.tim
   } else {
     assign("timecard", ps, envir = .GlobalEnv)
   }
+  write.csv(timecard, paste0(Sys.Date(),'_timecard.csv'))
 }
