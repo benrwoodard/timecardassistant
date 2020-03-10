@@ -6,9 +6,10 @@
 \usage{
 tca_followup(
   how = "email",
-  who = "Neha",
+  who = "name",
   when = "today",
   what = "something very important",
+  status = "unfinished",
   todo = todos
 )
 }
@@ -20,6 +21,8 @@ tca_followup(
 \item{when}{When will this need to be completed}
 
 \item{what}{What are the details that need to be accomplished}
+
+\item{status}{What is the current status of the task to followup on}
 
 \item{todos}{This is just pulling in the existing 'todos' dataframe if it exists}
 }

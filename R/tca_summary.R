@@ -4,7 +4,8 @@
 #'
 #' @description Summarizes the group by day
 #'
-#' @param timecard ads the timecard dataframe to the function
+#' @param timecard adds the timecard dataframe to the function
+#' @param date_filter This helps filter the results to today's date or change it.
 #'
 #' @import dplyr
 #'
