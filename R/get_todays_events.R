@@ -2,6 +2,9 @@
 #'
 #'
 #' @param token token obtained from [calendar_token()]
+#' @param id Email authorization
+#' @param today What date is being used to pull the data
+#'
 #'
 #' @return Tibble with columns for .
 #' @family calendar functions
@@ -19,6 +22,12 @@ events <- today %>%
   arrange(start_time) %>%
   mutate(start_time = as.numeric(str_replace(start_time, ':', ''))+100) %>%
   mutate(end_time = as.numeric(str_replace(end_time, ':', ''))+ 100) %>%
+  mutate(start_time = ifelse(nchar(start_time)<4,
+                             format(strptime(paste0(0, start_time), format = '%H%M'),'%r'),
+                             format(strptime(start_time, format = '%H%M'), '%r')),
+         end_time = ifelse(nchar(end_time)<4,
+                           format(strptime(paste0(0, end_time), format = '%H%M'), '%r'),
+                           format(strptime(end_time, format = '%H%M'), '%r')))%>%
   select (start_time, end_time, summary)
 return(events)
 }
