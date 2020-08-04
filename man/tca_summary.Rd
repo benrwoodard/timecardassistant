@@ -7,10 +7,13 @@
 tca_summary(timecard = timecard, date_filter = Sys.Date())
 }
 \arguments{
+<<<<<<< HEAD
 \item{timecard}{adds the timecard dataframe to the function}
 
 \item{date_filter}{This helps filter the results to today's date or change it.}
+=======
 \item{timecard}{ads the timecard dataframe to the function}
+>>>>>>> 72916b6a9a87dbcf09debf6e81602eb986138cfb
 }
 \description{
 Summarizes the group by day
