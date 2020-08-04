@@ -20,6 +20,6 @@ events <- today %>%
   mutate(start_time = as.numeric(str_replace(start_time, ':', ''))+100) %>%
   mutate(end_time = as.numeric(str_replace(end_time, ':', ''))+ 100) %>%
   select (start_time, end_time, summary)
-#return(events)
+return(events)
 }
 
