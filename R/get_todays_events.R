@@ -16,7 +16,10 @@ events <- today %>%
   mutate(start_time = format(start_datetime-(5*60*60), "%H:%M"),
          end_time = format(end_datetime-(5*60*60), "%H:%M") )  %>%
   select(start_time, end_time, summary, description) %>%
-  arrange(start_time)
-return(events)
+  arrange(start_time) %>%
+  mutate(start_time = as.numeric(str_replace(start_time, ':', ''))+100) %>%
+  mutate(end_time = as.numeric(str_replace(end_time, ':', ''))+ 100) %>%
+  select (start_time, end_time, summary)
+#return(events)
 }
 
