@@ -16,8 +16,10 @@ tca_summary <- function(timecard = timecard, date_filter = Sys.Date()) {
   timecard %>%
     filter(date == date_filter) %>%
     mutate(client = tolower(client)) %>%
-    group_by(date, client) %>%
-    summarise(rawtime = sum(dif), psatime = sum(psatime))
+    group_by(client) %>%
+    summarise(psatime = sum(psatime)) %>%
+    ungroup() %>%
+    add_row(summarise_all(., funs(if(is.numeric(.)) sum(.) else "Total")))
 
 
 
