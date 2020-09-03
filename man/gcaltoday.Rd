@@ -7,6 +7,10 @@
 gcaltoday(today = Sys.Date(), id = gargle::gargle_oauth_email())
 }
 \arguments{
+\item{today}{What date is being used to pull the data}
+
+\item{id}{Email authorization}
+
 \item{token}{token obtained from [calendar_token()]}
 }
 \value{

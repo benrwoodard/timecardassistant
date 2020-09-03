@@ -4,7 +4,10 @@
 \alias{tca_summary}
 \title{Summarize your timecard by date and client}
 \usage{
-tca_summary(timecard = timecard, date_filter = Sys.Date())
+tca_summary(
+  timecard = timecard,
+  date_filter = floor_date(as.Date(Sys.Date(), "\%m/\%d/\%Y"), unit = "week")
+)
 }
 \arguments{
 \item{timecard}{adds the timecard dataframe to the function}
