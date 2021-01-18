@@ -16,7 +16,7 @@
 #'
 #' @export
 
-donetimer <- function(notes = NA, finished = NA, projectstart = ps, pf = Sys.time()) {
+donetimer <- function(finished = NA, notes = NA, projectstart = ps, pf = Sys.time()) {
 
   if(!is.na(finished)) {
     finished = finished*60*60
