@@ -30,5 +30,7 @@ starttimer <- function(client = "sdi",
   }
 
   p <- data.frame(client, pn, starttime)
-  assign("ps", p, envir = .GlobalEnv)
+  pos <- 1
+  envir = as.environment(pos)
+  assign("ps", p, envir = envir)
 }

@@ -59,9 +59,13 @@ donetimer <- function(finished = NA,
 
   if(exists('timecard')) {
     timecard <-  rbind(timecard, ps)
-    assign('timecard', timecard, envir = .GlobalEnv)
+    pos <- 1
+    envir = as.environment(pos)
+    assign('timecard', timecard, envir = envir)
   } else {
-    assign("timecard", ps, envir = .GlobalEnv)
+    pos <- 1
+    envir = as.environment(pos)
+    assign("timecard", ps, envir = envir)
   }
   utils::write.csv(timecard, paste0(Sys.Date(),'_timecard.csv'))
 }
