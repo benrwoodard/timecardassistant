@@ -20,7 +20,7 @@
 #' @importFrom janitor adorn_totals
 #' @export
 
-summary <- function(timecard = timecard,
+summarytc <- function(timecard = timecard,
                     flag_date = Sys.Date()) {
 
   date_filter = lubridate::floor_date(as.Date(flag_date, "%m/%d/%Y"), unit="week")
@@ -32,6 +32,6 @@ summary <- function(timecard = timecard,
     dplyr::summarise( psatime = sum(psatime), .groups = 'drop') %>%
     dplyr::arrange(client) %>%
     tidyr::spread(date, psatime) %>%
-    dplyr::mutate(dplyr::across(tidyr::everything(), ~tidyr::replace_na(.x, 0))) %>%
-    janitor::adorn_totals("row")
+    janitor::adorn_totals("row") %>%
+    dplyr::mutate(dplyr::across(tidyr::everything(), ~tidyr::replace_na(.x, 0)))
 }

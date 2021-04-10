@@ -19,7 +19,7 @@
 #' @export
 #'
 
-starttimer <- function(client = "sdi",
+starttc <- function(client = "sdi",
                        pn = "admin",
                        started = NA,
                        starttime = Sys.time()) {

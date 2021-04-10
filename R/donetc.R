@@ -18,7 +18,7 @@
 #'
 #' @export
 
-donetimer <- function(finished = NA,
+donetc <- function(finished = NA,
                       notes = NA,
                       projectstart = ps,
                       pf = Sys.time()) {
