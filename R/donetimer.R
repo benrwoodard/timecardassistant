@@ -10,13 +10,18 @@
 #' @param finished define this by using the percentage of hours (.50 = 30 minutes)
 #' if you need to adjust when you finished working on a project
 #' @param projectstart this is the record of the start time and project name
-#' @param pf this is the project finish time defined by the time the 'done' function was called
+#' @param pf Project finish time defined by the time the 'done' function was called
 #'
-#' @import dplyr
+#' @importFrom dplyr mutate
+#' @importFrom dplyr select
+#' @importFrom magrittr %>%
 #'
 #' @export
 
-donetimer <- function(finished = NA, notes = NA, projectstart = ps, pf = Sys.time()) {
+donetimer <- function(finished = NA,
+                      notes = NA,
+                      projectstart = ps,
+                      pf = Sys.time()) {
 
   if(!is.na(finished)) {
     finished = finished*60*60
@@ -26,15 +31,15 @@ donetimer <- function(finished = NA, notes = NA, projectstart = ps, pf = Sys.tim
   ps = projectstart
 
   ps <- ps %>%
-    mutate(date = format(starttime, '%Y-%m-%d'),
+    dplyr::mutate(date = format(starttime, '%Y-%m-%d'),
            projectname = pn,
            started = format(starttime, '%H:%M'),
            finished = format(pf, '%H:%M'),
            dif = round(as.numeric(pf - starttime, units = "hours"), digits = 2)) %>%
-    select(-starttime, -pn)
+    dplyr::select(-starttime, -pn)
 
 
-  ps <- ps %>% mutate(psatime =  ifelse(dif > .24 & dif < .75, .5,
+  ps <- ps %>% dplyr::mutate(psatime =  ifelse(dif > .24 & dif < .75, .5,
                                                ifelse(dif >= .75 & dif < 1.25, 1.0,
                                                 ifelse(dif >= 1.25 & dif < 1.75, 1.5,
                                                  ifelse(dif >= 1.75 & dif < 2.25, 2.0,
@@ -58,5 +63,5 @@ donetimer <- function(finished = NA, notes = NA, projectstart = ps, pf = Sys.tim
   } else {
     assign("timecard", ps, envir = .GlobalEnv)
   }
-  write.csv(timecard, paste0(Sys.Date(),'_timecard.csv'))
+  utils::write.csv(timecard, paste0(Sys.Date(),'_timecard.csv'))
 }

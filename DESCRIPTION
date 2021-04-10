@@ -1,13 +1,13 @@
 Package: timecardassistant
 Type: Package
 Title: Assists In The Creating Of Timecards
-Version: 0.0.0.9551
+Version: 0.1.0
 Author: Ben Woodard
 Maintainer: Ben Woodard <ben.woodard@searchdiscovery.com>
 Description: Use this package to assist you in keeping track of your time.
     Using this app in the daily R tasks will help you build your R skills while 
     keeping track of your activity time and streamlining your daily timecard entries.
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
@@ -18,5 +18,7 @@ Imports:
      purrr, 
      rlang, 
      tibble,
-     nlme
+     nlme,
+     magrittr,
+     tidyr
 RoxygenNote: 7.1.1

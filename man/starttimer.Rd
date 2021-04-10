@@ -4,18 +4,18 @@
 \alias{starttimer}
 \title{Start the timer}
 \usage{
-starttimer(client = "sdi", pn = "admin", starttime = Sys.time(), started = NA)
+starttimer(client = "sdi", pn = "admin", started = NA, starttime = Sys.time())
 }
 \arguments{
 \item{client}{Client initials ex. 1pw, gsk, ccc}
 
 \item{pn}{Project Name}
 
-\item{starttime}{The time that the project started. If you started
-earlier and want to catch up add}
-
 \item{started}{The time delay in decimal hour when you started the project.
 For example use '.50' to start the project 30 minutes ago.}
+
+\item{starttime}{The time that the project started. If you started
+earlier and want to catch up add}
 }
 \description{
 Use a project name that you can reference.

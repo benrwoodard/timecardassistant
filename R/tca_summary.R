@@ -1,26 +1,37 @@
-#' Summarize your timecard by date and client
+#' Summarize the timecard by date and client
 #'
-#' This summarizes the results of you hard work by day.
-#'
-#' @description Summarizes the group by day
+#' Summarizes the results of your hard work by day for the current week
 #'
 #' @param timecard adds the timecard dataframe to the function
-#' @param date_filter This helps filter the results to today's date or change it.
+#' @param date For current week leave as default. A different date can be added if needed.
 #'
-#' @import dplyr lubridate
+#' @importFrom lubridate floor_date
+#' @importFrom magrittr %>%
+#' @importFrom dplyr filter
+#' @importFrom dplyr mutate
+#' @importFrom dplyr group_by
+#' @importFrom dplyr summarise
+#' @importFrom dplyr arrange
+#' @importFrom tidyr spread
+#' @importFrom dplyr arrange
+#' @importFrom tibble add_row
+#' @importFrom dplyr summarise_all
+#' @importFrom dplyr funs
 #'
 #' @export
 
-tca_summary <- function(timecard = timecard, date_filter = floor_date(as.Date(Sys.Date(), "%m/%d/%Y"), unit="week")) {
+summary <- function(timecard = timecard,
+                    date = Sys.Date()) {
+
+  date_filter = lubridate::floor_date(as.Date(date, "%m/%d/%Y"), unit="week")
 
   timecard %>%
-    filter(date >= date_filter) %>%
-    mutate(client = tolower(client)) %>%
-    group_by(date, client) %>%
-    summarise( psatime = sum(psatime)) %>%
-    arrange(client) %>%
-    spread(date, psatime)%>%
-    add_row(summarise_all(., funs(if(is.numeric(.)) sum(., na.rm = T) else "Total")))
+    dplyr::filter(date >= date_filter) %>%
+    dplyr::mutate(client = tolower(client)) %>%
+    dplyr::group_by(date, client) %>%
+    dplyr::summarise( psatime = sum(psatime)) %>%
+    dplyr::arrange(client) %>%
+    tidyr::spread(date, psatime)%>%
+    tibble::add_row(dplyr::summarise_all(., dplyr::funs(if(is.numeric(.)) sum(., na.rm = T) else "Total")))
 
 }
-

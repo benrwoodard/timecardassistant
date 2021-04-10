@@ -4,17 +4,17 @@
 \alias{donetimer}
 \title{Stop the timer}
 \usage{
-donetimer(notes = NA, finished = NA, projectstart = ps, pf = Sys.time())
+donetimer(finished = NA, notes = NA, projectstart = ps, pf = Sys.time())
 }
 \arguments{
-\item{notes}{leave notes for yourself to be able to reference later}
-
 \item{finished}{define this by using the percentage of hours (.50 = 30 minutes)
 if you need to adjust when you finished working on a project}
 
+\item{notes}{leave notes for yourself to be able to reference later}
+
 \item{projectstart}{this is the record of the start time and project name}
 
-\item{pf}{this is the project finish time defined by the time the 'done' function was called}
+\item{pf}{Project finish time defined by the time the 'done' function was called}
 }
 \description{
 Use a project name that you can reference.
