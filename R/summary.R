@@ -14,9 +14,9 @@
 #' @importFrom dplyr arrange
 #' @importFrom tidyr spread
 #' @importFrom dplyr arrange
-#' @importFrom tibble add_row
-#' @importFrom dplyr summarise_all
-#' @importFrom dplyr funs
+#' @importFrom tidyr replace_na
+#' @importFrom tidyr everything
+#' @importFrom dplyr across
 #' @importFrom janitor adorn_totals
 #' @export
 
@@ -32,5 +32,6 @@ summary <- function(timecard = timecard,
     dplyr::summarise( psatime = sum(psatime), .groups = 'drop') %>%
     dplyr::arrange(client) %>%
     tidyr::spread(date, psatime) %>%
+    dplyr::mutate(dplyr::across(tidyr::everything(), ~tidyr::replace_na(.x, 0))) %>%
     janitor::adorn_totals("row")
 }
