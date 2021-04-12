@@ -15,12 +15,12 @@
 #' @export
 #'
 
-restortc <- function(filepath = NULL) {
+restoretc <- function(filepath = NULL) {
 
 if(is.null(filepath)) {
   items <- list.files(pattern = '_timecard.csv')
   lastfile <- max(items)
-  ans <- utils::menu(c("Yes", "No"), title=glue::glue('Is {lastfile} your most uptodate saved timecard?'))
+  ans <- utils::menu(c("Yes", "No"), title=glue::glue('Is "{lastfile}" your most uptodate saved timecard?'))
   }
 if(ans == 1) {
   timecardupdated <- readr::read_csv(lastfile)
