@@ -25,6 +25,13 @@ summarytc <- function(timecard = timecard,
 
   date_filter_tc = lubridate::floor_date(as.Date(flag_date, "%m/%d/%Y"), unit="week")
 
+  if(timecard %>%
+     dplyr::mutate(date2 = as.Date(date)) %>%
+     dplyr::filter(date2 >= date_filter_tc) %>%
+     summarise(sum(psatime)) == 0) {
+    stop('You don\'t have any hours for the week yet.')
+  }
+
   timecard %>%
     dplyr::mutate(date2 = as.Date(date)) %>%
     dplyr::filter(date2 >= date_filter_tc) %>%
