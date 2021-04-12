@@ -26,3 +26,11 @@ creates a global variable, 'ps', that is used to define the start
 time of a project and helps build the 'timecard' ouput when the done()
 function is run.
 }
+\examples{
+#Start activity at the default (current time)
+starttc(client = 'client name', pn = 'project name')
+
+#Start activity 30 minutes earlier (.5)
+starttc(client = 'client name', pn = 'project name', started = .5)
+
+}

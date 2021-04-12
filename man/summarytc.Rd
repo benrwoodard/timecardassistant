@@ -4,13 +4,23 @@
 \alias{summarytc}
 \title{Summarize the timecard by date and client}
 \usage{
-summarytc(timecard = timecard, flag_date = Sys.Date())
+summarytc(timecardobject = timecard, flag_date = Sys.Date())
 }
 \arguments{
-\item{timecard}{adds the timecard dataframe to the function}
+\item{timecardobject}{adds the timecard dataframe to the function}
 
 \item{flag_date}{For current week leave as default. A different date can be added if needed.}
 }
+\value{
+The summary table showing the current week by default but the argument 'flag_date' can
+be utilized to show any other date that has been recorded in the timecard object.
+}
 \description{
 Summarizes the results of your hard work by day for the current week
+}
+\examples{
+\donotrun
+#display a summary table of the timecard records for the current week
+summarytc(timecardobject = timecard)
+
 }

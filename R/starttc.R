@@ -17,6 +17,12 @@
 #' @importFrom magrittr %>%
 #'
 #' @export
+#' @examples
+#' #Start activity at the default (current time)
+#' starttc(client = 'client name', pn = 'project name')
+#'
+#' #Start activity 30 minutes earlier (.5)
+#' starttc(client = 'client name', pn = 'project name', started = .5)
 #'
 
 starttc <- function(client = "sdi",

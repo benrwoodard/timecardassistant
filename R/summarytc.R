@@ -2,8 +2,12 @@
 #'
 #' Summarizes the results of your hard work by day for the current week
 #'
-#' @param timecard adds the timecard dataframe to the function
+#' @param timecardobject adds the timecard dataframe to the function
 #' @param flag_date For current week leave as default. A different date can be added if needed.
+#'
+#' @return The summary table showing the current week by default but the argument 'flag_date' can
+#' be utilized to show any other date that has been recorded in the timecard object.
+#'
 #'
 #' @importFrom lubridate floor_date
 #' @importFrom magrittr %>%
@@ -19,20 +23,26 @@
 #' @importFrom dplyr across
 #' @importFrom janitor adorn_totals
 #' @export
+#'
+#' @examples
+#' \donotrun
+#' #display a summary table of the timecard records for the current week
+#' summarytc(timecardobject = timecard)
+#'
 
-summarytc <- function(timecard = timecard,
+summarytc <- function(timecardobject = timecard,
                      flag_date = Sys.Date()) {
 
   date_filter_tc = lubridate::floor_date(as.Date(flag_date, "%m/%d/%Y"), unit="week")
 
-  if(timecard %>%
+  if(timecardobject %>%
      dplyr::mutate(date2 = as.Date(date)) %>%
      dplyr::filter(date2 >= date_filter_tc) %>%
      summarise(sum(psatime)) == 0) {
     stop('You don\'t have any hours for the week yet.')
   }
 
-  timecard %>%
+  timecardobject %>%
     dplyr::mutate(date2 = as.Date(date)) %>%
     dplyr::filter(date2 >= date_filter_tc) %>%
     dplyr::mutate(client = tolower(client)) %>%
