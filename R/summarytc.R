@@ -23,10 +23,10 @@
 summarytc <- function(timecard = timecard,
                      flag_date = Sys.Date()) {
 
-  date_filter = lubridate::floor_date(as.Date(flag_date, "%m/%d/%Y"), unit="week")
+  date_filter_tc = lubridate::floor_date(as.Date(flag_date, "%m/%d/%Y"), unit="week")
 
   timecard %>%
-    dplyr::filter(date >= date_filter) %>%
+    dplyr::filter(date >= date_filter_tc) %>%
     dplyr::mutate(client = tolower(client)) %>%
     dplyr::group_by(date, client) %>%
     dplyr::summarise( psatime = sum(psatime), .groups = 'drop') %>%
