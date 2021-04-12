@@ -26,13 +26,13 @@ summarytc <- function(timecard = timecard,
   date_filter_tc = lubridate::floor_date(as.Date(flag_date, "%m/%d/%Y"), unit="week")
 
   timecard %>%
-    dplyr::mutate(date = as.Date(date)) %>%
-    dplyr::filter(date >= date_filter_tc) %>%
+    dplyr::mutate(date2 = as.Date(date)) %>%
+    dplyr::filter(date2 >= date_filter_tc) %>%
     dplyr::mutate(client = tolower(client)) %>%
-    dplyr::group_by(date, client) %>%
+    dplyr::group_by(date2, client) %>%
     dplyr::summarise( psatime = sum(psatime), .groups = 'drop') %>%
     dplyr::arrange(client) %>%
-    tidyr::spread(date, psatime) %>%
+    tidyr::spread(date2, psatime) %>%
     janitor::adorn_totals("row") %>%
     dplyr::mutate(dplyr::across(tidyr::everything(), ~tidyr::replace_na(.x, 0)))
 }
