@@ -1,12 +1,12 @@
 Package: timecardassistant
 Type: Package
-Title: Assists In The Creating Of Timecards
+Title: A Simple Time Tracking Assistant
 Version: 0.2.0
 Author: Ben Woodard
 Maintainer: Ben Woodard <ben.woodard@searchdiscovery.com>
-Description: Use this package to assist you in keeping track of your time.
+Description: Use this simple package is designed to assist you in keeping track of your time.
     Using this app in the daily R tasks will help you build your R skills while 
-    keeping track of your activity time and streamlining your daily timecard entries.
+    keeping track of your time and streamlining your daily timecard entry process.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
