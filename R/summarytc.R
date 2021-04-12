@@ -21,7 +21,7 @@
 #' @export
 
 summarytc <- function(timecard = timecard,
-                    flag_date = Sys.Date()) {
+                     flag_date = Sys.Date()) {
 
   date_filter = lubridate::floor_date(as.Date(flag_date, "%m/%d/%Y"), unit="week")
 
