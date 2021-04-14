@@ -28,11 +28,14 @@ addtimetc <- function(client = "sdi",
   if(is.null(started) | is.null(finished)) {
     stop('You must provide both the started and finished values')
   }
+  started = '17:00'
+  finished = '17:23'
   projectname <- pn
   started <- as.POSIXct(started, format="%H:%M")
+
   finished <- as.POSIXct(finished, format="%H:%M")
   date <- as.character(Sys.Date())
-  dif <- round(as.numeric(finished - started), 2)
+  dif <- round(as.numeric(finished - started)/60, 2)
   ps2 <- data.frame(client, date, projectname, started = format(started, '%H:%M'), finished = format(finished, '%H:%M'), dif, notes)
 
   addtime <- ps2 %>% dplyr::mutate(psatime =  ifelse(dif > .24 & dif < .75, .5,
