@@ -5,8 +5,8 @@
 #'
 #' @param client Client initials ex. 1pw, gsk, ccc
 #' @param pn Project Name
-#' @param started The time that the work block started.
-#' @param finished The time that the work block is finished
+#' @param started The time that the work block started. Must be a character string. ex. '08:00'
+#' @param finished The time that the work block is finished. Must be a character string. ex. '14:30'
 #' @param notes Add notes for each project if needed
 #' @param date The date the event took place. Defaults to the current date.
 #' @param existing_timecard The timecard object that will be used to record the new project activity. Does not need to exist
@@ -29,7 +29,10 @@ addtimetc <- function(client = "sdi",
     stop('You must provide both the started and finished values')
   }
   projectname <- pn
-  dif <- round((finished - started)/60, 2)
+  started <- as.POSIXct(started, format="%H:%M")
+  finished <- as.POSIXct(finished, format="%H:%M")
+
+  dif <- round(as.numeric(finished - started), 2)
   ps2 <- data.frame(client, date, projectname, started, finished, dif, notes)
 
   addtime <- ps2 %>% dplyr::mutate(psatime =  ifelse(dif > .24 & dif < .75, .5,

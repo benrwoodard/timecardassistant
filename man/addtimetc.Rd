@@ -19,9 +19,9 @@ addtimetc(
 
 \item{pn}{Project Name}
 
-\item{started}{The time that the work block started.}
+\item{started}{The time that the work block started. Must be a character string. ex. '08:00'}
 
-\item{finished}{The time that the work block is finished}
+\item{finished}{The time that the work block is finished. Must be a character string. ex. '14:30'}
 
 \item{notes}{Add notes for each project if needed}
 
