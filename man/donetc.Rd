@@ -24,14 +24,3 @@ This stops the timer and records the time for the project.
 creates a global variable, 'ps' that is used to define the start
 time of a project.
 }
-\examples{
-#Record the current activity (ps) done at the default (current) time
-donetc()
-
-#Record the current activity (ps) done 30 minutes earlier (.5)
-donetc(finished = .5)
-
-#Record the current activity (ps) done with notes from the activity.
-donetc(notes = 'these are the notes regarding the activity')
-
-}

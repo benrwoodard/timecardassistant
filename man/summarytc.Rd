@@ -18,9 +18,3 @@ be utilized to show any other date that has been recorded in the timecard object
 \description{
 Summarizes the results of your hard work by day for the current week
 }
-\examples{
-\donotrun
-#display a summary table of the timecard records for the current week
-summarytc(timecardobject = timecard)
-
-}

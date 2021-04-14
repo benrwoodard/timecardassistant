@@ -22,12 +22,9 @@
 #' @importFrom tidyr everything
 #' @importFrom dplyr across
 #' @importFrom janitor adorn_totals
+#'
 #' @export
 #'
-#' @examples
-#' \donotrun
-#' #display a summary table of the timecard records for the current week
-#' summarytc(timecardobject = timecard)
 #'
 
 summarytc <- function(timecardobject = timecard,
