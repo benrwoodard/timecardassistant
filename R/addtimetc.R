@@ -33,7 +33,7 @@ addtimetc <- function(client = "sdi",
   finished <- as.POSIXct(finished, format="%H:%M")
 
   dif <- round(as.numeric(finished - started), 2)
-  ps2 <- data.frame(client, date, projectname, started, finished, dif, notes)
+  ps2 <- data.frame(client, date, projectname, started = format(started, '%H:%M'), finished = format(finished, '%H:%M'), dif, notes)
 
   addtime <- ps2 %>% dplyr::mutate(psatime =  ifelse(dif > .24 & dif < .75, .5,
                                                ifelse(dif >= .75 & dif < 1.25, 1.0,
