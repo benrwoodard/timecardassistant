@@ -28,8 +28,7 @@ addtimetc <- function(client = "sdi",
   if(is.null(started) | is.null(finished)) {
     stop('You must provide both the started and finished values')
   }
-  started = '17:00'
-  finished = '17:23'
+
   projectname <- pn
   started <- as.POSIXct(started, format="%H:%M")
 
