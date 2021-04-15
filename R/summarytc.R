@@ -2,6 +2,8 @@
 #'
 #' Summarizes the results of your hard work by day for the current week
 #'
+#' @param pn boolean FALSE (default) or TRUE to include the dimension in the summary table
+#' @param description boolean FALSE (default) or TRUE to include the dimension in the summary table
 #' @param timecardobject adds the timecard dataframe to the function
 #' @param flag_date For current week leave as default. A different date can be added if needed.
 #'
@@ -26,19 +28,20 @@
 #' @export
 #'
 #'
-
-summarytc <- function(timecardobject = timecard,
-                     flag_date = Sys.Date()) {
+summarytc <- function(pn = T,
+                      description = T,
+                      timecardobject = timecard,
+                      flag_date = Sys.Date()) {
 
   date_filter_tc = lubridate::floor_date(as.Date(flag_date, "%m/%d/%Y"), unit="week")
 
   if(timecardobject %>%
-     dplyr::mutate(date2 = as.Date(date)) %>%
-     dplyr::filter(date2 >= date_filter_tc) %>%
-     summarise(sum(psatime)) == 0) {
+      dplyr::mutate(date2 = as.Date(date)) %>%
+      dplyr::filter(date2 >= date_filter_tc) %>%
+      summarise(sum(psatime)) == 0) {
     stop('You don\'t have any hours for the week yet.')
   }
-
+ if(pn == FALSE & description == FALSE){
   timecardobject %>%
     dplyr::mutate(date2 = as.Date(date)) %>%
     dplyr::filter(date2 >= date_filter_tc) %>%
@@ -49,4 +52,38 @@ summarytc <- function(timecardobject = timecard,
     tidyr::spread(date2, psatime) %>%
     janitor::adorn_totals("row") %>%
     dplyr::mutate(dplyr::across(tidyr::everything(), ~tidyr::replace_na(.x, 0)))
+ } else if(pn == TRUE & description == FALSE) {
+   timecardobject %>%
+     dplyr::mutate(date2 = as.Date(date)) %>%
+     dplyr::filter(date2 >= date_filter_tc) %>%
+     dplyr::mutate(client = tolower(client)) %>%
+     dplyr::group_by(date2, client, pn) %>%
+     dplyr::summarise( psatime = sum(psatime), .groups = 'drop') %>%
+     dplyr::arrange(client) %>%
+     tidyr::spread(date2, psatime) %>%
+     janitor::adorn_totals("row") %>%
+     dplyr::mutate(dplyr::across(tidyr::everything(), ~tidyr::replace_na(.x, 0)))
+ } else if(pn == FALSE & description == TRUE) {
+   timecardobject %>%
+     dplyr::mutate(date2 = as.Date(date)) %>%
+     dplyr::filter(date2 >= date_filter_tc) %>%
+     dplyr::mutate(client = tolower(client)) %>%
+     dplyr::group_by(date2, client, description) %>%
+     dplyr::summarise( psatime = sum(psatime), .groups = 'drop') %>%
+     dplyr::arrange(client) %>%
+     tidyr::spread(date2, psatime) %>%
+     janitor::adorn_totals("row") %>%
+     dplyr::mutate(dplyr::across(tidyr::everything(), ~tidyr::replace_na(.x, 0)))
+ } else if(pn == TRUE & description == TRUE) {
+   timecardobject %>%
+     dplyr::mutate(date2 = as.Date(date)) %>%
+     dplyr::filter(date2 >= date_filter_tc) %>%
+     dplyr::mutate(client = tolower(client)) %>%
+     dplyr::group_by(date2, client, pn, description) %>%
+     dplyr::summarise( psatime = sum(psatime), .groups = 'drop') %>%
+     dplyr::arrange(client) %>%
+     tidyr::spread(date2, psatime) %>%
+     janitor::adorn_totals("row") %>%
+     dplyr::mutate(dplyr::across(tidyr::everything(), ~tidyr::replace_na(.x, 0)))
+  }
 }

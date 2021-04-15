@@ -15,20 +15,20 @@
 #' @export
 #'
 
-restoretc <- function(filepath = NULL) {
+restoretc <- function(filepath = 'NULL') {
 
-if(is.null(filepath)) {
-  items <- list.files(pattern = '_timecard.csv')
-  lastfile <- max(items)
-  ans <- utils::menu(c("Yes", "No"), title=glue::glue('Is "{lastfile}" your most uptodate saved timecard?'))
+  if(is.null(filepath)) {
+    items <- list.files(pattern = '_timecard.csv')
+    lastfile <- max(items)
+    ans <- utils::menu(c("Yes", "No"), title=glue::glue('Is "{lastfile}" your most uptodate saved timecard?'))
   }
-if(ans == 1) {
+  if(ans == 1) {
   timecardupdated <- readr::read_csv(lastfile)
   timecard <- timecardupdated %>% dplyr::select(-X1) %>%
      dplyr::mutate(started = as.character(started),
            finished = as.character(finished))
   } else if(ans == 2) {
-   "Please provide the filepath using the 'filepath' argument."
+   stop("Please provide the filepath using the 'filepath' argument.")
   } else {
    timecardupdated <- readr::read_csv(file)
    timecard <- timecardupdated %>% dplyr::select(-X1) %>%

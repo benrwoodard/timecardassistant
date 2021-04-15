@@ -4,9 +4,18 @@
 \alias{summarytc}
 \title{Summarize the timecard by date and client}
 \usage{
-summarytc(timecardobject = timecard, flag_date = Sys.Date())
+summarytc(
+  pn = T,
+  description = T,
+  timecardobject = timecard,
+  flag_date = Sys.Date()
+)
 }
 \arguments{
+\item{pn}{boolean FALSE (default) or TRUE to include the dimension in the summary table}
+
+\item{description}{boolean FALSE (default) or TRUE to include the dimension in the summary table}
+
 \item{timecardobject}{adds the timecard dataframe to the function}
 
 \item{flag_date}{For current week leave as default. A different date can be added if needed.}
