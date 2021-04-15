@@ -4,7 +4,7 @@
 \alias{restoretc}
 \title{Restore the timecard}
 \usage{
-restoretc(filepath = "NULL")
+restoretc(filepath = NULL)
 }
 \arguments{
 \item{filepath}{The file path of the most recent timecard csv file}

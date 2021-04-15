@@ -15,23 +15,26 @@
 #' @export
 #'
 
-restoretc <- function(filepath = 'NULL') {
-
+restoretc <- function(filepath = NULL) {
+filepath <- '2021-04-04_timecard.csv'
   if(is.null(filepath)) {
     items <- list.files(pattern = '_timecard.csv')
     lastfile <- max(items)
     ans <- utils::menu(c("Yes", "No"), title=glue::glue('Is "{lastfile}" your most uptodate saved timecard?'))
   }
+  if(!is.null(filepath)) {
+    ans <- 0
+  }
   if(ans == 1) {
   timecardupdated <- readr::read_csv(lastfile)
-  timecard <- timecardupdated %>% dplyr::select(-X1) %>%
+  timecardupdated %>% dplyr::select(-X1) %>%
      dplyr::mutate(started = as.character(started),
            finished = as.character(finished))
   } else if(ans == 2) {
    stop("Please provide the filepath using the 'filepath' argument.")
-  } else {
-   timecardupdated <- readr::read_csv(file)
-   timecard <- timecardupdated %>% dplyr::select(-X1) %>%
+  } else if(ans == 0) {
+   timecardupdated <- readr::read_csv(filepath)
+   timecardupdated %>% dplyr::select(-X1) %>%
       dplyr::mutate(started = as.character(started),
          finished = as.character(finished))
   }
