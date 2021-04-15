@@ -16,7 +16,7 @@
 #'
 
 restoretc <- function(filepath = NULL) {
-filepath <- '2021-04-04_timecard.csv'
+
   if(is.null(filepath)) {
     items <- list.files(pattern = '_timecard.csv')
     lastfile <- max(items)
