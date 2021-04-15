@@ -5,8 +5,8 @@
 \title{Summarize the timecard by date and client}
 \usage{
 summarytc(
-  pn = T,
-  description = T,
+  pn = F,
+  description = F,
   timecardobject = timecard,
   flag_date = Sys.Date()
 )

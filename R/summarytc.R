@@ -28,8 +28,8 @@
 #' @export
 #'
 #'
-summarytc <- function(pn = T,
-                      description = T,
+summarytc <- function(pn = F,
+                      description = F,
                       timecardobject = timecard,
                       flag_date = Sys.Date()) {
 
@@ -57,7 +57,7 @@ summarytc <- function(pn = T,
      dplyr::mutate(date2 = as.Date(date)) %>%
      dplyr::filter(date2 >= date_filter_tc) %>%
      dplyr::mutate(client = tolower(client)) %>%
-     dplyr::group_by(date2, client, pn) %>%
+     dplyr::group_by(date2, client, projectname) %>%
      dplyr::summarise( psatime = sum(psatime), .groups = 'drop') %>%
      dplyr::arrange(client) %>%
      tidyr::spread(date2, psatime) %>%
@@ -79,7 +79,7 @@ summarytc <- function(pn = T,
      dplyr::mutate(date2 = as.Date(date)) %>%
      dplyr::filter(date2 >= date_filter_tc) %>%
      dplyr::mutate(client = tolower(client)) %>%
-     dplyr::group_by(date2, client, pn, description) %>%
+     dplyr::group_by(date2, client, projectname, description) %>%
      dplyr::summarise( psatime = sum(psatime), .groups = 'drop') %>%
      dplyr::arrange(client) %>%
      tidyr::spread(date2, psatime) %>%
