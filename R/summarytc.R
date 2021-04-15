@@ -27,7 +27,6 @@
 #'
 #' @export
 #'
-#'
 summarytc <- function(pn = F,
                       description = F,
                       timecardobject = timecard,
@@ -51,7 +50,7 @@ summarytc <- function(pn = F,
     dplyr::arrange(client) %>%
     tidyr::spread(date2, psatime) %>%
     janitor::adorn_totals("row") %>%
-    dplyr::mutate(dplyr::across(tidyr::everything(), ~tidyr::replace_na(.x, 0)))
+    dplyr::mutate(dplyr::across(where(is.numeric), ~tidyr::replace_na(.x, 0)))
  } else if(pn == TRUE & description == FALSE) {
    timecardobject %>%
      dplyr::mutate(date2 = as.Date(date)) %>%
@@ -62,7 +61,7 @@ summarytc <- function(pn = F,
      dplyr::arrange(client) %>%
      tidyr::spread(date2, psatime) %>%
      janitor::adorn_totals("row") %>%
-     dplyr::mutate(dplyr::across(tidyr::everything(), ~tidyr::replace_na(.x, 0)))
+     dplyr::mutate(dplyr::across(where(is.numeric), ~tidyr::replace_na(.x, 0)))
  } else if(pn == FALSE & description == TRUE) {
    timecardobject %>%
      dplyr::mutate(date2 = as.Date(date)) %>%
@@ -73,7 +72,7 @@ summarytc <- function(pn = F,
      dplyr::arrange(client) %>%
      tidyr::spread(date2, psatime) %>%
      janitor::adorn_totals("row") %>%
-     dplyr::mutate(dplyr::across(tidyr::everything(), ~tidyr::replace_na(.x, 0)))
+     dplyr::mutate(dplyr::across(where(is.numeric), ~tidyr::replace_na(.x, 0)))
  } else if(pn == TRUE & description == TRUE) {
    timecardobject %>%
      dplyr::mutate(date2 = as.Date(date)) %>%
@@ -84,6 +83,6 @@ summarytc <- function(pn = F,
      dplyr::arrange(client) %>%
      tidyr::spread(date2, psatime) %>%
      janitor::adorn_totals("row") %>%
-     dplyr::mutate(dplyr::across(tidyr::everything(), ~tidyr::replace_na(.x, 0)))
+     dplyr::mutate(dplyr::across(where(is.numeric), ~tidyr::replace_na(.x, 0)))
   }
 }
