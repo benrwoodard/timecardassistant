@@ -4,12 +4,20 @@
 \alias{starttc}
 \title{Start the timer}
 \usage{
-starttc(client = "sdi", pn = "admin", started = NA, starttime = Sys.time())
+starttc(
+  client = "sdi",
+  pn = "admin",
+  description = "",
+  started = NA,
+  starttime = Sys.time()
+)
 }
 \arguments{
 \item{client}{Client initials ex. 1pw, gsk, ccc}
 
 \item{pn}{Project Name}
+
+\item{description}{Description of the project}
 
 \item{started}{The time delay in decimal hour when you started the project.
 For example use '.50' to start the project 30 minutes ago.}

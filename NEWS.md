@@ -1,4 +1,8 @@
+# timecardassistant 0.3.5
+
 # timecardassistant 0.3.4
+
+* Left variable definition in the code
 
 # timecardassistant 0.3.3
 

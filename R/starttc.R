@@ -9,6 +9,7 @@
 #'
 #' @param client Client initials ex. 1pw, gsk, ccc
 #' @param pn Project Name
+#' @param description Description of the project
 #' @param started The time delay in decimal hour when you started the project.
 #' For example use '.50' to start the project 30 minutes ago.
 #' @param starttime The time that the project started. If you started
@@ -19,16 +20,17 @@
 #' @export
 #'
 starttc <- function(client = "sdi",
-                       pn = "admin",
-                       started = NA,
-                       starttime = Sys.time()) {
+                    pn = "admin",
+                    description = '',
+                    started = NA,
+                    starttime = Sys.time()) {
 
   if(!is.na(started)) {
     started = started*60*60
     starttime = starttime - started
   }
 
-  p <- data.frame(client, pn, starttime)
+  p <- data.frame(client, pn, description, starttime)
   pos <- 1
   envir = as.environment(pos)
   assign("ps", p, envir = envir)

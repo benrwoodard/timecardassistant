@@ -7,6 +7,7 @@
 addtimetc(
   client = "sdi",
   pn = "admin",
+  description = "",
   started = NULL,
   finished = NULL,
   notes = "",
@@ -18,6 +19,8 @@ addtimetc(
 \item{client}{Client initials ex. 1pw, gsk, ccc}
 
 \item{pn}{Project Name}
+
+\item{description}{Description of the project}
 
 \item{started}{The time that the work block started. Must be a character string. ex. '08:00'}
 

@@ -5,6 +5,7 @@
 #'
 #' @param client Client initials ex. 1pw, gsk, ccc
 #' @param pn Project Name
+#' @param description Description of the project
 #' @param started The time that the work block started. Must be a character string. ex. '08:00'
 #' @param finished The time that the work block is finished. Must be a character string. ex. '14:30'
 #' @param notes Add notes for each project if needed
@@ -20,6 +21,7 @@
 
 addtimetc <- function(client = "sdi",
                       pn = "admin",
+                      description = '',
                       started = NULL ,
                       finished = NULL,
                       notes = '',
@@ -35,7 +37,7 @@ addtimetc <- function(client = "sdi",
   finished <- as.POSIXct(finished, format="%H:%M")
   date <- as.character(Sys.Date())
   dif <- round(as.numeric(finished - started)/60, 2)
-  ps2 <- data.frame(client, date, projectname, started = format(started, '%H:%M'), finished = format(finished, '%H:%M'), dif, notes)
+  ps2 <- data.frame(client, date, projectname, description, started = format(started, '%H:%M'), finished = format(finished, '%H:%M'), dif, notes)
 
   addtime <- ps2 %>% dplyr::mutate(psatime =  ifelse(dif > .24 & dif < .75, .5,
                                                ifelse(dif >= .75 & dif < 1.25, 1.0,
@@ -53,7 +55,7 @@ addtimetc <- function(client = "sdi",
                                                                                                                                    ifelse(dif >= 6.75 & dif < 7.25, 7.0,
                                                                                                                                           ifelse(dif >= 7.25 & dif < 7.75, 7.5,
                                                                                                                                                  ifelse(dif >= 7.75 & dif < 8.25, 8.0, dif)))))))))))))))))
-  addtime <- addtime %>% dplyr::select("client", "date", "projectname", "started", "finished", "dif", "psatime", "notes")
+  addtime <- addtime %>% dplyr::select("client", "date", "projectname", "description", "started", "finished", "dif", "psatime", "notes")
 
   if(exists('timecard')) {
     timecard <-  rbind(existing_timecard, addtime)

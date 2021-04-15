@@ -33,6 +33,7 @@ donetc <- function(finished = NA,
   ps <- ps %>%
     dplyr::mutate(date = format(starttime, '%Y-%m-%d'),
            projectname = pn,
+           description = description,
            started = format(starttime, '%H:%M'),
            finished = format(pf, '%H:%M'),
            dif = round(as.numeric(pf - starttime, units = "hours"), digits = 2)) %>%
