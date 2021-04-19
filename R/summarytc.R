@@ -37,7 +37,7 @@ summarytc <- function(pn = F,
   if(timecardobject %>%
       dplyr::mutate(date2 = as.Date(date)) %>%
       dplyr::filter(date2 >= date_filter_tc) %>%
-      summarise(sum(psatime)) == 0) {
+      summarise(sum(psatime, na.rm = T)) == 0) {
     stop('You don\'t have any hours for the week yet.')
   }
  if(pn == FALSE & description == FALSE){
