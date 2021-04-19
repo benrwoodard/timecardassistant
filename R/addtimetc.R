@@ -15,6 +15,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom dplyr select
 #' @importFrom dplyr mutate
+#' @importFrom tibble rowid_to_column
 #'
 #' @export
 #'
@@ -58,16 +59,24 @@ addtimetc <- function(client = "sdi",
   addtime <- addtime %>% dplyr::select("client", "date", "projectname", "description", "started", "finished", "dif", "psatime", "notes")
 
   if(exists('timecard')) {
-    timecard <-  rbind(existing_timecard, addtime)
+    if(names(existing_timecard)[1] == 'X1') {
+      existing_timecard <- existing_timecard %>% select(-id)
+    }
+    if(names(existing_timecard)[1] == 'id') {
+      existing_timecard <- existing_timecard %>% select(-id)
+    }
+    timecard <-  rbind(existing_timecard, addtime) %>%
+      tibble::rowid_to_column('id')
     pos <- 1
     envir = as.environment(pos)
     assign('timecard', timecard, envir = envir)
   } else {
+    ps <- ps %>% tibble::rowid_to_column('id')
     pos <- 1
     envir = as.environment(pos)
     assign("timecard", ps, envir = envir)
   }
 
-  utils::write.csv(timecard, paste0(Sys.Date(),'_timecard.csv'))
+  utils::write.csv(timecard, paste0(Sys.Date(),'_timecard.csv'), row.names = F)
 
 }

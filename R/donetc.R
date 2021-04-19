@@ -15,6 +15,7 @@
 #' @importFrom dplyr mutate
 #' @importFrom dplyr select
 #' @importFrom magrittr %>%
+#' @importFrom tibble rowid_to_column
 #'
 #' @export
 #'
@@ -25,9 +26,8 @@ donetc <- function(finished = NA,
 
   if(!is.na(finished)) {
     finished = finished*60*60
-    pf = pf- finished
+    pf = pf - finished
     }
-
   ps = projectstart
 
   ps <- ps %>%
@@ -59,14 +59,18 @@ donetc <- function(finished = NA,
   ps$notes <-  notes
 
   if(exists('timecard')) {
-    timecard <-  rbind(timecard, ps)
+    timecard <-  rbind(timecard, ps) %>%
+      tibble::rowid_to_column('id')
     pos <- 1
     envir = as.environment(pos)
     assign('timecard', timecard, envir = envir)
+
   } else {
+    timecard <- ps %>%
+      tibble::rowid_to_column('id')
     pos <- 1
     envir = as.environment(pos)
     assign("timecard", ps, envir = envir)
   }
-  utils::write.csv(timecard, paste0(Sys.Date(),'_timecard.csv'))
+  utils::write.csv(timecard, paste0(Sys.Date(),'_timecard.csv'), row.names = F)
 }

@@ -27,14 +27,14 @@ restoretc <- function(filepath = NULL) {
   }
   if(ans == 1) {
   timecardupdated <- readr::read_csv(lastfile)
-  timecardupdated %>% dplyr::select(-X1) %>%
+  timecardupdated %>%
      dplyr::mutate(started = as.character(started),
            finished = as.character(finished))
   } else if(ans == 2) {
    stop("Please provide the filepath using the 'filepath' argument.")
   } else if(ans == 0) {
    timecardupdated <- readr::read_csv(filepath)
-   timecardupdated %>% dplyr::select(-X1) %>%
+   timecardupdated %>%
       dplyr::mutate(started = as.character(started),
          finished = as.character(finished))
   }
