@@ -59,6 +59,7 @@ donetc <- function(finished = NA,
   ps$notes <-  notes
 
   if(exists('timecard')) {
+    timecard <- timecard %>% dplyr::select(-id)
     timecard <-  rbind(timecard, ps) %>%
       tibble::rowid_to_column('id')
     pos <- 1
