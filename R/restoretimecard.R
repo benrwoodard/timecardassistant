@@ -11,6 +11,7 @@
 #' @importFrom dplyr mutate
 #' @importFrom utils menu
 #' @importFrom glue glue
+#' @importFrom dplyr rename
 #'
 #' @export
 #'
@@ -27,6 +28,9 @@ restoretc <- function(filepath = NULL) {
   }
   if(ans == 1) {
   timecardupdated <- readr::read_csv(lastfile)
+  if(names(timecardupdated)[1] == 'X1'){
+    timecardupdated <- timecardupdated %>% dplyr::rename(id = X1)
+  }
   timecardupdated %>%
      dplyr::mutate(started = as.character(started),
            finished = as.character(finished))
