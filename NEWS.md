@@ -1,3 +1,5 @@
+# timecardassistant 0.3.8
+
 # timecardassistant 0.3.7
 
 * cleans up summary out put

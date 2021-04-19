@@ -1,7 +1,7 @@
 Package: timecardassistant
 Type: Package
 Title: A Simple Time Tracking Assistant
-Version: 0.3.7
+Version: 0.3.8
 Author: Ben Woodard
 Maintainer: Ben Woodard <ben.woodard@searchdiscovery.com>
 Description: Use this simple package is designed to assist you in keeping track of your time.
