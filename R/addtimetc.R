@@ -36,7 +36,7 @@ addtimetc <- function(client = "sdi",
   started <- as.POSIXct(started, format="%H:%M")
 
   finished <- as.POSIXct(finished, format="%H:%M")
-  date <- as.character(Sys.Date())
+  date <- as.character(date)
   dif <- round(as.numeric(finished - started), 2)
   ps2 <- data.frame(client, date, projectname, description, started = format(started, '%H:%M'), finished = format(finished, '%H:%M'), dif, notes)
 
