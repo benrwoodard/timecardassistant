@@ -1,3 +1,5 @@
+# timecardassistant 0.3.10
+
 # timecardassistant 0.3.9
 
 * Fixed to the addtimetc() function 
