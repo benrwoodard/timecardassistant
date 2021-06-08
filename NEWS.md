@@ -1,3 +1,5 @@
+# timecardassistant 0.3.11
+
 # timecardassistant 0.3.10
 
 - updated to the addtimetc() function to handle dates other than "Sys.Date()"
