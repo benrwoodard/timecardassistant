@@ -1,5 +1,7 @@
 # timecardassistant 0.3.11
 
+* fixed an issue in addtimetc() for time less than an hour that would use minutes instead of hours
+
 # timecardassistant 0.3.10
 
 - updated to the addtimetc() function to handle dates other than "Sys.Date()"
